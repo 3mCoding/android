@@ -15,7 +15,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     ImageButton arrowQuestion, arrowResult, arrowAnswer;
     TextView txtProblem, txtResult, txtAnswer;
-    Button btnSubmit;
+    Button btnSubmit, btnDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class QuestionActivity extends AppCompatActivity {
         txtAnswer = findViewById(R.id.txtAnswer);
 
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnDescription = findViewById(R.id.btnDescription);
 
         arrowQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +80,16 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(QuestionActivity.this, "제출되었습니다.", Toast.LENGTH_SHORT).show();
+                btnDescription.setVisibility(View.VISIBLE);
+                btnSubmit.setVisibility(View.GONE);
+            }
+        });
+
+        btnDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnDescription.setVisibility(View.GONE);
+                btnSubmit.setVisibility(View.VISIBLE);
             }
         });
     }

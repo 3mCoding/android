@@ -25,12 +25,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:text="이메일"
+            android:text=" 이 메 일"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/join_email"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginLeft="20dp"
@@ -46,16 +47,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:text=" 학     번  "
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
         <EditText
+            android:id="@+id/join_student_num"
+            android:text="학번"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:layout_marginLeft="20dp"
             android:background="@drawable/edit_text_border_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -75,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/join_password"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginLeft="20dp"
@@ -82,4 +80,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/join_password_check"
+            android:text="비밀번호 확인"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/edit_text_border_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:text="회원가입"
+        android:id="@+id/join_submit"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

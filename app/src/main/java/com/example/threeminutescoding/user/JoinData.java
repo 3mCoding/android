@@ -3,8 +3,8 @@ package com.example.threeminutescoding.user;
 import com.google.gson.annotations.SerializedName;
 
 public class JoinData {
-    @SerializedName("id")
-    private String userId;
+    @SerializedName("student_num")
+    private String stuNum;
 
     @SerializedName("name")
     private String userName;
@@ -15,9 +15,9 @@ public class JoinData {
     @SerializedName("password")
     private String userPw;
 
-    public JoinData(String userId, String userName, String userEmail, String userPwd){
+    public JoinData(String stuNum, String userName, String userEmail, String userPwd){
         this.userName = userName;
-        this.userId = userId;
+        this.stuNum = stuNum;
         this.userEmail = userEmail;
         this.userPw = userPwd;
     }

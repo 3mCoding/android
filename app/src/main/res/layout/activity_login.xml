@@ -43,6 +43,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/login_email"
             android:backgroundTint="#fff"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -67,6 +68,7 @@
             android:layout_height="wrap_content"
             android:text="비밀번호" />
         <EditText
+            android:id="@+id/login_password"
             android:backgroundTint="#fff"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -75,6 +77,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/login_submit"
         android:layout_marginTop="25dp"
         android:background="@drawable/button_description"
         android:layout_width="wrap_content"
@@ -100,4 +103,15 @@
         android:layout_height="50dp"
         android:text="구글 로그인" />
 
+    <Button
+        android:id="@+id/login_into_join"
+        android:text="회원가입"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ProgressBar
+        android:id="@+id/login_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 </LinearLayout>

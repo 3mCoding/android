@@ -5,4 +5,11 @@
         <item>C</item>
         <item>C++</item>
     </array>
+    <array name="grade">
+        <item>전체</item>
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+    </array>
+
 </resources>

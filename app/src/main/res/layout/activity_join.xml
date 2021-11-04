@@ -50,14 +50,30 @@
 
         <EditText
             android:id="@+id/join_student_num"
-            android:text="학번"
+            android:hint="학번"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:background="@drawable/edit_text_border_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/join_name"
+            android:hint="이름"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@drawable/edit_text_border_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_marginLeft="70dp"
@@ -91,7 +107,7 @@
 
         <EditText
             android:id="@+id/join_password_check"
-            android:text="비밀번호 확인"
+            android:hint="비밀번호 확인"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:background="@drawable/edit_text_border_bottom"
@@ -106,4 +122,10 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <ProgressBar
+        android:id="@+id/join_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 </LinearLayout>

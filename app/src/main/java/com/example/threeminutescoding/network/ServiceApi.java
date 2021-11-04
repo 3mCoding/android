@@ -7,8 +7,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
-public class ServiceApi {
+public interface ServiceApi {
     // 회원가입
     @POST("/user/join")
-    Call<JoinResponse> userJoin(@Body JoinData data);
+    public Call<JoinResponse> userJoin(@Body JoinData data);
 }

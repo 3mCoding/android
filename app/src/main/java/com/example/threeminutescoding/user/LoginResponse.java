@@ -9,11 +9,18 @@ public class LoginResponse {
     @SerializedName("message")
     private String message;
 
+    @SerializedName("step")
+    private int step;
+
     public int getCode() {
         return code;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public int getStep() {
+        return step;
     }
 }

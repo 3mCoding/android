@@ -9,6 +9,8 @@ public class LoginData {
     @SerializedName("password")
     String userPw;
 
+    @SerializedName("step")
+    int userStep;
     public LoginData(String userEmail, String userPw){
         this.userEmail = userEmail;
         this.userPw = userPw;

@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.threeminutescoding.Question.QuestionActivity;
+import com.example.threeminutescoding.user.UserInfo;
 import com.google.android.material.tabs.TabLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -52,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         btnProblem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getApplicationContext(), QuestionActivity.class);
-                startActivity(in);
-
+                Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
+                int step = UserInfo.getStep();
+                //Log.d("myapp", "main - getStep() : " + step);
+                intent.putExtra("step", step);
+                startActivity(intent);
             }
         });
 

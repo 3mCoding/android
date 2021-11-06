@@ -100,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                 showProgress(false);
 
                 if (result.getCode() == 200) {
+                    Log.d("myapp", "step : " + result.getStep());
+                    UserInfo.setUserInfo(result.getStep());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     //액티비티 종료

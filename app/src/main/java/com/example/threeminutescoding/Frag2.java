@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,9 +17,12 @@ import java.util.ArrayList;
 
 public class Frag2 extends Fragment {
     ListView listview;
-    String[] question = {"2104 김유나", "2105 김유진", "2107 김하진", "2109 심이진", "2213 이민지", "2111 유예영", "2207 김하늘", "2201 가연우", "2204 김세린" };
-    ArrayAdapter<String> ar;
-    ArrayList<String> choice;
+    String[] number = {"2104", "2105", "2107", "2109", "2213"};
+    String[] name = {"김유나", "김유진", "김하진", "심이진", "이민지" };
+    int[] problem = {7,8,9,3,5};
+    UserAdapter ar;
+    ArrayList<User> choice;
+    User user;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,9 +30,15 @@ public class Frag2 extends Fragment {
         View v = inflater.inflate(R.layout.frag2, container, false);
         listview = v.findViewById(R.id.listview);
         choice = new ArrayList<>();
-        ar = new ArrayAdapter<String>(getContext(), android.R.layout.simple_expandable_list_item_1, question);
 
+        for(int i=0; i<number.length; i++) {
+            user = new User(number[i], name[i], problem[i]);
+            choice.add(user);
+        }
+        ar = new UserAdapter(getContext(), choice);
         listview.setAdapter(ar);
+
+
         return v;
     }
 }

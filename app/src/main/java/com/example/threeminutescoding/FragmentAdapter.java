@@ -10,8 +10,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> fragmentList = new ArrayList<>();
     public FragmentAdapter(FragmentManager fm) {
         super(fm);
-        fragmentList.add(new Frag1());
-        fragmentList.add(new Frag2());
+        fragmentList.add(new TabQuestionList());
+        fragmentList.add(new TabStudentList());
     }
     @Override
     public Fragment getItem(int position) {

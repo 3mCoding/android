@@ -1,10 +1,12 @@
 package com.example.threeminutescoding.network;
 
 import com.example.threeminutescoding.Question.Question;
+import com.example.threeminutescoding.Question.QuestionList;
 import com.example.threeminutescoding.user.JoinData;
 import com.example.threeminutescoding.user.JoinResponse;
 import com.example.threeminutescoding.user.LoginData;
 import com.example.threeminutescoding.user.LoginResponse;
+import com.example.threeminutescoding.user.StudentList;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ServiceApi {
@@ -21,7 +24,13 @@ public interface ServiceApi {
     // 로그인
     @POST("/user/login")
     public Call<LoginResponse> userLogin(@Body LoginData data);
-    //문제
-    @GET("/question")
-    public Call<List<Question>> getData(@Query("id") int id);
+    //문제 화면
+    @GET("/question/type/{type}")
+    public Call<List<Question>> questionData(@Path ("type") String type, @Query("no") int no);
+    //문제 리스트
+    @GET("/question/list")
+    public Call<List<QuestionList>> questionListData();
+    //학생 리스트
+    @GET("/user/list")
+    public Call<List<StudentList>> studentListData();
 }

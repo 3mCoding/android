@@ -3,6 +3,7 @@ package com.example.threeminutescoding;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -90,6 +91,9 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 btnDescription.setVisibility(View.GONE);
                 btnSubmit.setVisibility(View.VISIBLE);
+                Intent in = new Intent(QuestionActivity.this, AnswerActivity.class);
+                startActivity(in);
+
             }
         });
     }

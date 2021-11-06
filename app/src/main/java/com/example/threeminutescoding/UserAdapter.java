@@ -10,22 +10,25 @@ import java.util.ArrayList;
 
 public class UserAdapter extends BaseAdapter {
     Context mContext;
-    ArrayList<User> mData;
+    ArrayList<String> stuNum;
+    ArrayList<String> name;
+    ArrayList<Integer> step;
 
-    public UserAdapter(Context mContext, ArrayList<User> mData) {
+    public UserAdapter(Context mContext, ArrayList<String> num, ArrayList<String> name, ArrayList<Integer> step) {
         this.mContext = mContext;
-        this.mData = mData;
+        this.stuNum = num;
+        this.name = name;
+        this.step = step;
     }
-
 
     @Override
     public int getCount() {
-        return mData.size();
+        return step.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return mData.get(i);
+        return step.get(i);
     }
 
     @Override
@@ -36,15 +39,15 @@ public class UserAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null) {
-            view = View.inflate(mContext, R.layout.item_user_list, null);
+            view = View.inflate(mContext, R.layout.tab_student_list_item, null);
         }
-        TextView number = view.findViewById(R.id.userNumber);
-        TextView name = view.findViewById(R.id.userName);
-        TextView problem = view.findViewById(R.id.userProblem);
+        TextView viewNumber = view.findViewById(R.id.userNumber);
+        TextView viewName = view.findViewById(R.id.userName);
+        TextView viewStep = view.findViewById(R.id.userProblem);
 
-        number.setText(mData.get(i).number);
-        name.setText(mData.get(i).name);
-        problem.setText(Integer.toString(mData.get(i).problem));
+        viewNumber.setText(stuNum.get(i));
+        viewName.setText(name.get(i));
+        viewStep.setText(String.valueOf(step.get(i)) + "번");
 
         return view;
     }

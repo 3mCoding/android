@@ -2,6 +2,8 @@ package com.example.threeminutescoding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
+import com.example.threeminutescoding.Question.QuestionActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import android.content.Intent;

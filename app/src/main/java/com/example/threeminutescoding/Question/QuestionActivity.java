@@ -1,15 +1,15 @@
-package com.example.threeminutescoding;
+package com.example.threeminutescoding.Question;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.threeminutescoding.R;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -21,7 +21,9 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
+        btnSwitch();
+    }
+    void btnSwitch(){
         arrowQuestion = findViewById(R.id.arrowQuestion);
         arrowResult = findViewById(R.id.arrowResult);
         arrowAnswer = findViewById(R.id.arrowAnswer);

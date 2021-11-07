@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,8 +36,11 @@ public class QuestionActivity extends AppCompatActivity {
     int step;
     ListView list_submit;
     ArrayList<Submit> nList;
+    public static EditText[] mEdit = new EditText[5];
+    public static ArrayList<EditText> nEdit = new ArrayList<>();
     SubmitAdapter ar;
     int answerNum;
+    String answerAll = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class QuestionActivity extends AppCompatActivity {
         Intent intent = new Intent(this.getIntent());
         step = intent.getIntExtra("step", 1);
         //Log.d("myapp", "question num : " + String.valueOf(num));
+
 
         txtTitle = findViewById(R.id.txtTitle);
         txtProblem = findViewById(R.id.txtProblem);
@@ -124,6 +129,11 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(QuestionActivity.this, "제출되었습니다.", Toast.LENGTH_SHORT).show();
+
+                for(int i=0; i<5; i++) {
+                    answerAll += nList.get(i).edtAnswer + "*";
+                }
+                Log.d("answerCheck", "전체 답 : " + answerAll);
                 btnDescription.setVisibility(View.VISIBLE);
                 btnSubmit.setVisibility(View.GONE);
             }
@@ -134,6 +144,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 btnDescription.setVisibility(View.GONE);
                 btnSubmit.setVisibility(View.VISIBLE);
+
                 Intent in = new Intent(QuestionActivity.this, AnswerActivity.class);
                 startActivity(in);
             }
@@ -163,13 +174,12 @@ public class QuestionActivity extends AppCompatActivity {
                     Log.d("myapp", response.errorBody().toString());
                 }
                 for (int i = 0; i < answerNum; i++) {
-
                     Submit submit = new Submit(i + 1);
                     nList.add(submit);
                 }
-
                 ar = new SubmitAdapter(getApplicationContext(), nList);
                 list_submit.setAdapter(ar);
+
             }
 
             @Override
@@ -180,4 +190,5 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
     }
+
 }

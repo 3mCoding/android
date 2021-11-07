@@ -8,14 +8,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.threeminutescoding.AnswerActivity;
 import com.example.threeminutescoding.R;
+import com.example.threeminutescoding.Submit;
+import com.example.threeminutescoding.SubmitAdapter;
 import com.example.threeminutescoding.network.RetrofitClient;
 import com.example.threeminutescoding.network.ServiceApi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,11 +28,15 @@ import retrofit2.Response;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    ImageButton arrowQuestion, arrowResult, arrowAnswer;
+    ImageButton arrowQuestion, arrowResult, arrowAnswer, arrowSubmit;
     TextView txtProblem, txtResult, txtAnswer, txtTitle;
     Button btnSubmit, btnDescription;
     private ServiceApi service;
     int step;
+    ListView list_submit;
+    ArrayList<Submit> nList;
+    SubmitAdapter ar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +58,13 @@ public class QuestionActivity extends AppCompatActivity {
         arrowQuestion = findViewById(R.id.arrowQuestion);
         arrowResult = findViewById(R.id.arrowResult);
         arrowAnswer = findViewById(R.id.arrowAnswer);
+        arrowSubmit = findViewById(R.id.arrowSubmit);
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnDescription = findViewById(R.id.btnDescription);
+
+        list_submit = findViewById(R.id.list_submit);
+        nList = new ArrayList<>();
 
         arrowQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +108,27 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
+        arrowSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(list_submit.getVisibility() == View.VISIBLE) {
+                    arrowSubmit.setBackgroundResource(R.drawable.arrow_right);
+                    list_submit.setVisibility(View.GONE);
+                }
+                else {
+                    arrowSubmit.setBackgroundResource(R.drawable.arrow_down_black);
+                    list_submit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        for(int i=0; i<5; i++) {
+            Submit submit = new Submit(i+1);
+            nList.add(submit);
+        }
+
+        ar = new SubmitAdapter(this, nList);
+        list_submit.setAdapter(ar);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +187,5 @@ public class QuestionActivity extends AppCompatActivity {
             if(code.substring(i, i+1).equals('_') == false) continue;
             cnt++;
         }
-
     }
 }

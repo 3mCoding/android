@@ -10,5 +10,6 @@ public class UserInfo {
     }
     public static int getStep(){
         Log.d("myapp", "getStep : " +step);
-        return step; }
+        return step;
+    }
 }

@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class Question {
     @SerializedName("no")
     private int no;
+    @SerializedName("answer_num")
+    private int answerNum;
     @SerializedName("question")
     private String question;
     @SerializedName("print")
@@ -27,4 +29,7 @@ public class Question {
     public String getCode() {
         return code;
     }
+
+    public int getAnswerNum() {  return answerNum;   }
+
 }

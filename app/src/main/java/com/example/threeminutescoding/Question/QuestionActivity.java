@@ -36,6 +36,7 @@ public class QuestionActivity extends AppCompatActivity {
     ListView list_submit;
     ArrayList<Submit> nList;
     SubmitAdapter ar;
+    int answerNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class QuestionActivity extends AppCompatActivity {
         btnSwitch();
     }
 
-    void btnSwitch(){
+    void btnSwitch() {
         arrowQuestion = findViewById(R.id.arrowQuestion);
         arrowResult = findViewById(R.id.arrowResult);
         arrowAnswer = findViewById(R.id.arrowAnswer);
@@ -69,11 +70,10 @@ public class QuestionActivity extends AppCompatActivity {
         arrowQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(txtProblem.getVisibility() == View.VISIBLE) {
+                if (txtProblem.getVisibility() == View.VISIBLE) {
                     arrowQuestion.setBackgroundResource(R.drawable.arrow_right);
                     txtProblem.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     arrowQuestion.setBackgroundResource(R.drawable.arrow_down_black);
                     txtProblem.setVisibility(View.VISIBLE);
                 }
@@ -83,11 +83,10 @@ public class QuestionActivity extends AppCompatActivity {
         arrowResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(txtResult.getVisibility() == View.VISIBLE) {
+                if (txtResult.getVisibility() == View.VISIBLE) {
                     arrowResult.setBackgroundResource(R.drawable.arrow_right);
                     txtResult.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     arrowResult.setBackgroundResource(R.drawable.arrow_down_black);
                     txtResult.setVisibility(View.VISIBLE);
                 }
@@ -97,11 +96,10 @@ public class QuestionActivity extends AppCompatActivity {
         arrowAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(txtAnswer.getVisibility() == View.VISIBLE) {
+                if (txtAnswer.getVisibility() == View.VISIBLE) {
                     arrowAnswer.setBackgroundResource(R.drawable.arrow_right);
                     txtAnswer.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     arrowAnswer.setBackgroundResource(R.drawable.arrow_down_black);
                     txtAnswer.setVisibility(View.VISIBLE);
                 }
@@ -111,24 +109,16 @@ public class QuestionActivity extends AppCompatActivity {
         arrowSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(list_submit.getVisibility() == View.VISIBLE) {
+                if (list_submit.getVisibility() == View.VISIBLE) {
                     arrowSubmit.setBackgroundResource(R.drawable.arrow_right);
                     list_submit.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     arrowSubmit.setBackgroundResource(R.drawable.arrow_down_black);
                     list_submit.setVisibility(View.VISIBLE);
                 }
             }
         });
 
-        for(int i=0; i<5; i++) {
-            Submit submit = new Submit(i+1);
-            nList.add(submit);
-        }
-
-        ar = new SubmitAdapter(this, nList);
-        list_submit.setAdapter(ar);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,10 +140,10 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    void getData(){
+    void getData() {
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
-        Call<List<Question>> call = service.questionData("java",step);
+        Call<List<Question>> call = service.questionData("java", step);
         call.enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
@@ -165,11 +155,21 @@ public class QuestionActivity extends AppCompatActivity {
                         txtProblem.setText(info.getQuestion());
                         txtResult.setText(info.getPrint());
                         txtAnswer.setText(info.getCode());
+                        answerNum = info.getAnswerNum();
+                        Log.d("myapp", String.valueOf(info.getAnswerNum()));
                     }
                 } else {
                     Log.d("myapp", "question - else err");
                     Log.d("myapp", response.errorBody().toString());
                 }
+                for (int i = 0; i < answerNum; i++) {
+
+                    Submit submit = new Submit(i + 1);
+                    nList.add(submit);
+                }
+
+                ar = new SubmitAdapter(getApplicationContext(), nList);
+                list_submit.setAdapter(ar);
             }
 
             @Override
@@ -179,13 +179,5 @@ public class QuestionActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-    private void makeEdit(String code){
-        int length = code.length();
-        int cnt = 0;
-        for(int i = 0; i < length; i++){
-            if(code.substring(i, i+1).equals('_') == false) continue;
-            cnt++;
-        }
     }
 }

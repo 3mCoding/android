@@ -118,7 +118,6 @@
                 android:text="코드" />
             <Spinner
                 android:elevation="0dp"
-                android:spinnerMode="dropdown"
                 android:theme="@style/ThemeOverlay.AppCompat.Light"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
@@ -131,7 +130,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/language"
-                android:entries="@array/language"
                 android:popupBackground="#EBEBEB"
                 android:dropDownWidth="wrap_content"/>
         </RelativeLayout>

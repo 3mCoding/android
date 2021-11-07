@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +39,8 @@ public class QuestionActivity extends AppCompatActivity {
     ListView list_submit;
     ArrayList<Submit> nList;
     SubmitAdapter ar;
-    int answerNum;
-
+    int answerNum, init = 0;
+    String[] items = {"java", "c", "c++"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +54,10 @@ public class QuestionActivity extends AppCompatActivity {
         txtResult = findViewById(R.id.txtResult);
         txtAnswer = findViewById(R.id.txtAnswer);
         txtTitle.setText("오늘의 문제 - " + step + "번");
-        getData();
+        questionSpinner();
+        getData("java");
         btnSwitch();
+
     }
 
     void btnSwitch() {
@@ -140,10 +145,9 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    void getData() {
+    void getData(String type) {
         service = RetrofitClient.getClient().create(ServiceApi.class);
-
-        Call<List<Question>> call = service.questionData("java", step);
+        Call<List<Question>> call = service.questionData(type, step);
         call.enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
@@ -162,14 +166,16 @@ public class QuestionActivity extends AppCompatActivity {
                     Log.d("myapp", "question - else err");
                     Log.d("myapp", response.errorBody().toString());
                 }
-                for (int i = 0; i < answerNum; i++) {
+                if(init != 1){
+                    for (int i = 0; i < answerNum; i++) {
 
-                    Submit submit = new Submit(i + 1);
-                    nList.add(submit);
+                        Submit submit = new Submit(i + 1);
+                        nList.add(submit);
+                    }
+                    ar = new SubmitAdapter(getApplicationContext(), nList);
+                    list_submit.setAdapter(ar);
+                    init++;
                 }
-
-                ar = new SubmitAdapter(getApplicationContext(), nList);
-                list_submit.setAdapter(ar);
             }
 
             @Override
@@ -177,6 +183,27 @@ public class QuestionActivity extends AppCompatActivity {
                 Log.d("myapp", "question - Failure error");
                 Log.e("myapp", "에러 : " + t.getMessage());
                 Toast.makeText(getApplicationContext(), "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    void questionSpinner(){
+        Spinner spinner = findViewById(R.id.language);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, items
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(view.getContext(), items[position], Toast.LENGTH_LONG).show();
+                getData(items[position]);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }

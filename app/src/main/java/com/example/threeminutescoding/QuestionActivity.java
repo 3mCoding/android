@@ -6,17 +6,24 @@ import androidx.viewpager.widget.PagerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class QuestionActivity extends AppCompatActivity {
 
-    ImageButton arrowQuestion, arrowResult, arrowAnswer;
+    ImageButton arrowQuestion, arrowResult, arrowAnswer, arrowSubmit;
     TextView txtProblem, txtResult, txtAnswer;
     Button btnSubmit, btnDescription;
+    ListView list_submit;
+    ArrayList<Submit> nList;
+    SubmitAdapter ar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,7 @@ public class QuestionActivity extends AppCompatActivity {
         arrowQuestion = findViewById(R.id.arrowQuestion);
         arrowResult = findViewById(R.id.arrowResult);
         arrowAnswer = findViewById(R.id.arrowAnswer);
+        arrowSubmit = findViewById(R.id.arrowSubmit);
 
         txtProblem = findViewById(R.id.txtProblem);
         txtResult = findViewById(R.id.txtResult);
@@ -33,6 +41,9 @@ public class QuestionActivity extends AppCompatActivity {
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnDescription = findViewById(R.id.btnDescription);
+
+        list_submit = findViewById(R.id.list_submit);
+        nList = new ArrayList<>();
 
         arrowQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +87,29 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
+
+        arrowSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(list_submit.getVisibility() == View.VISIBLE) {
+                    arrowSubmit.setBackgroundResource(R.drawable.arrow_right);
+                    list_submit.setVisibility(View.GONE);
+                }
+                else {
+                    arrowSubmit.setBackgroundResource(R.drawable.arrow_down_black);
+                    list_submit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        for(int i=0; i<5; i++) {
+            Submit submit = new Submit(i+1);
+            nList.add(submit);
+        }
+
+        ar = new SubmitAdapter(this, nList);
+        list_submit.setAdapter(ar);
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

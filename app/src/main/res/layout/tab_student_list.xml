@@ -10,7 +10,6 @@
         android:background="#fff"
         android:padding="10dp">
         <Spinner
-            android:spinnerMode="dropdown"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:paddingTop="5dp"
@@ -22,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/grade"
-            android:entries="@array/grade"
             android:popupBackground="#EBEBEB"
             android:dropDownWidth="wrap_content"/>
         <LinearLayout

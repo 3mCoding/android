@@ -37,5 +37,5 @@ public interface ServiceApi {
     public Call<List<QuestionList>> questionListData();
     //학생 리스트
     @GET("/user/list")
-    public Call<List<StudentList>> studentListData();
+    public Call<List<StudentList>> studentListData(@Query("order") int order);
 }

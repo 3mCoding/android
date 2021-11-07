@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -38,9 +39,14 @@ public class QuestionActivity extends AppCompatActivity {
     int step;
     ListView list_submit;
     ArrayList<Submit> nList;
+    public static EditText[] mEdit = new EditText[5];
+    public static ArrayList<EditText> nEdit = new ArrayList<>();
     SubmitAdapter ar;
     int answerNum, init = 0;
     String[] items = {"java", "c", "c++"};
+    int answerNum;
+    String answerAll = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +63,6 @@ public class QuestionActivity extends AppCompatActivity {
         questionSpinner();
         getData("java");
         btnSwitch();
-
     }
 
     void btnSwitch() {
@@ -129,6 +134,11 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(QuestionActivity.this, "제출되었습니다.", Toast.LENGTH_SHORT).show();
+
+                for(int i=0; i<5; i++) {
+                    answerAll += nList.get(i).edtAnswer + "*";
+                }
+                Log.d("answerCheck", "전체 답 : " + answerAll);
                 btnDescription.setVisibility(View.VISIBLE);
                 btnSubmit.setVisibility(View.GONE);
             }

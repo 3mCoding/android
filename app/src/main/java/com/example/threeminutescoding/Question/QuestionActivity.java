@@ -17,11 +17,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.threeminutescoding.AnswerActivity;
+import com.example.threeminutescoding.MainActivity;
 import com.example.threeminutescoding.R;
 import com.example.threeminutescoding.Submit;
 import com.example.threeminutescoding.SubmitAdapter;
 import com.example.threeminutescoding.network.RetrofitClient;
 import com.example.threeminutescoding.network.ServiceApi;
+import com.example.threeminutescoding.user.LoginActivity;
+import com.example.threeminutescoding.user.LoginData;
+import com.example.threeminutescoding.user.LoginResponse;
+import com.example.threeminutescoding.user.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +47,8 @@ public class QuestionActivity extends AppCompatActivity {
     public static EditText[] mEdit = new EditText[5];
     public static ArrayList<EditText> nEdit = new ArrayList<>();
     SubmitAdapter ar;
-    int answerNum, init = 0;
+    int answerNum, init = 0, id;
     String[] items = {"java", "c", "c++"};
-    int answerNum;
     String answerAll = "";
 
     @Override
@@ -135,12 +139,20 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(QuestionActivity.this, "제출되었습니다.", Toast.LENGTH_SHORT).show();
 
-                for(int i=0; i<5; i++) {
+                answerAll = "";
+                for(int i=0; i<answerNum; i++) {
                     answerAll += nList.get(i).edtAnswer + "*";
                 }
-                Log.d("answerCheck", "전체 답 : " + answerAll);
-                btnDescription.setVisibility(View.VISIBLE);
-                btnSubmit.setVisibility(View.GONE);
+                Log.d("myapp", "전체 답 : " + answerAll);
+
+                if(answerAll.contains("null")){
+                    Toast.makeText(QuestionActivity.this, "모든 문항을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    checkAnswer(new answerData(id, answerAll));
+
+                }
+
             }
         });
 
@@ -170,6 +182,7 @@ public class QuestionActivity extends AppCompatActivity {
                         txtResult.setText(info.getPrint());
                         txtAnswer.setText(info.getCode());
                         answerNum = info.getAnswerNum();
+                        id = info.getId();
                         Log.d("myapp", String.valueOf(info.getAnswerNum()));
                     }
                 } else {
@@ -214,6 +227,27 @@ public class QuestionActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    void checkAnswer(answerData data){
+        Log.d("myapp", "check");
+        service.questionAnswer(data).enqueue(new Callback<AnswerResponse>() {
+            @Override
+            public void onResponse(Call<AnswerResponse> call, Response<AnswerResponse> response) {
+                AnswerResponse result = response.body();
+                Toast.makeText(getApplicationContext(), result.getMessage(), Toast.LENGTH_LONG).show();
+                if (result.getCode() == 200) {
+                    btnDescription.setVisibility(View.VISIBLE);
+                    btnSubmit.setVisibility(View.GONE);
+                }
+            }
+            @Override
+            public void onFailure(Call<AnswerResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
+                Log.e("로그인 에러 발생",t.getMessage());
+                t.printStackTrace();
             }
         });
     }

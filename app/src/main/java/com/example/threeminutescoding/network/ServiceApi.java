@@ -31,7 +31,7 @@ public interface ServiceApi {
     public Call<List<Question>> questionData(@Path ("type") String type, @Query("no") int no);
     //문제 - 정답 확인
     @POST("/question/answer")
-    public Class<AnswerResponse> questionAnswer(@Body answerData data);
+    public Call<AnswerResponse> questionAnswer(@Body answerData data);
     //문제 리스트
     @GET("/question/list")
     public Call<List<QuestionList>> questionListData();

@@ -3,6 +3,8 @@ package com.example.threeminutescoding.Question;
 import com.google.gson.annotations.SerializedName;
 
 public class Question {
+    @SerializedName("id")
+    private int id;
     @SerializedName("no")
     private int no;
     @SerializedName("answer_num")
@@ -13,6 +15,10 @@ public class Question {
     private String print;
     @SerializedName("code")
     private String code;
+
+    public int getId() {
+        return id;
+    }
 
     public int getNo() {
         return no;

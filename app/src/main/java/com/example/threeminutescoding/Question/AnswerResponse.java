@@ -9,11 +9,18 @@ public class AnswerResponse {
     @SerializedName("message")
     private String message;
 
+    @SerializedName("pass")
+    private String pass;
+
     public int getCode() {
         return code;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public String getPass() {
+        return pass;
     }
 }

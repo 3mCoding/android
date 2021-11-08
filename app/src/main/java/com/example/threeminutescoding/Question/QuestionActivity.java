@@ -16,17 +16,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.threeminutescoding.AnswerActivity;
-import com.example.threeminutescoding.MainActivity;
+import com.example.threeminutescoding.DescriptionActivity;
 import com.example.threeminutescoding.R;
 import com.example.threeminutescoding.Submit;
 import com.example.threeminutescoding.SubmitAdapter;
 import com.example.threeminutescoding.network.RetrofitClient;
 import com.example.threeminutescoding.network.ServiceApi;
-import com.example.threeminutescoding.user.LoginActivity;
-import com.example.threeminutescoding.user.LoginData;
-import com.example.threeminutescoding.user.LoginResponse;
-import com.example.threeminutescoding.user.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +54,7 @@ public class QuestionActivity extends AppCompatActivity {
         step = intent.getIntExtra("step", 1);
         //Log.d("myapp", "question num : " + String.valueOf(num));
 
-        txtTitle = findViewById(R.id.txtTitle);
+        txtTitle = findViewById(R.id.text_title);
         txtProblem = findViewById(R.id.txtProblem);
         txtResult = findViewById(R.id.txtResult);
         txtAnswer = findViewById(R.id.txtAnswer);
@@ -161,8 +156,9 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 btnDescription.setVisibility(View.GONE);
                 btnSubmit.setVisibility(View.VISIBLE);
-                Intent in = new Intent(QuestionActivity.this, AnswerActivity.class);
-                startActivity(in);
+                Intent intent = new Intent(QuestionActivity.this, DescriptionActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }

@@ -8,6 +8,7 @@ public class UserInfo {
     private static String name;
     private static int rank;
     private static String joinData;
+    private static String email;
 
     public static void setUserInfo(int _step){
         step = _step;
@@ -43,5 +44,13 @@ public class UserInfo {
 
     public static void setJoinData(String joinData) {
         UserInfo.joinData = joinData;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        UserInfo.email = email;
     }
 }

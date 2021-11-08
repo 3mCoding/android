@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".MypageActivity"></activity>
-        <activity android:name=".AnswerActivity" />
+        <activity android:name=".DescriptionActivity" />
         <activity android:name=".user.LoginActivity"></activity>
         <activity android:name=".user.JoinActivity"></activity>
         <activity android:name=".Question.QuestionActivity" />

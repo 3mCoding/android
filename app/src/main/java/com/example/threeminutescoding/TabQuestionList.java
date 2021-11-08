@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,8 +35,8 @@ public class TabQuestionList extends Fragment {
     ArrayList<Integer> getStep = new ArrayList<>();
     //데이터 저장 시 no번 - title 식으로 저장
     ArrayList<String> getData = new ArrayList<>();
-    ArrayAdapter<String> arrayQ;
-
+    QuestionListAdapter adapter;
+    int cnt = 0;
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,9 +45,6 @@ public class TabQuestionList extends Fragment {
 
         listview = v.findViewById(R.id.list_view);
         detailsData();
-        arrayQ = new ArrayAdapter<String>(getContext(), android.R.layout.simple_expandable_list_item_1, getData);
-
-        listview.setAdapter(arrayQ);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -71,9 +69,12 @@ public class TabQuestionList extends Fragment {
                     List<QuestionList> result = response.body();
                     for (QuestionList info : result) {
                         getStep.add(info.getNo());
-                        getData.add(info.getNo() + "번 - " + info.getTitle());
+                        getData.add(info.getTitle());
                     }
+                    adapter = new QuestionListAdapter(getContext(), getData, getStep);
+                    listview.setAdapter(adapter);
                 }
+
             }
 
             @Override

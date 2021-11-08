@@ -68,6 +68,7 @@
             android:layout_height="wrap_content"
             android:text="비밀번호" />
         <EditText
+            android:inputType="textPassword"
             android:id="@+id/login_password"
             android:backgroundTint="#fff"
             android:layout_weight="1"
@@ -75,6 +76,11 @@
             android:layout_height="wrap_content"
             android:textColor="#fff" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 
     <Button
         android:id="@+id/login_submit"
@@ -102,12 +108,23 @@
         android:layout_width="230dp"
         android:layout_height="50dp"
         android:text="구글 로그인" />
-
+    <TextView
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="아직 계정이 없다면," />
     <Button
+        android:stateListAnimator="@null"
         android:id="@+id/login_into_join"
-        android:text="회원가입"
+        android:background="0"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
     <ProgressBar
         android:id="@+id/login_progress"
         android:layout_width="wrap_content"

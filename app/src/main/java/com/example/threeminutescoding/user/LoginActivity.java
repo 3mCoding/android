@@ -42,6 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         viewPw = findViewById(R.id.login_password);
         loginBtn = findViewById(R.id.login_submit);
 
+        Button passBtn = findViewById(R.id.pass);
+        passBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startLogin(new LoginData("@e-mirim.hs.kr", "zzzzzzzz"));
+            }
+        });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +109,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (result.getCode() == 200) {
                     Log.d("myapp", "step : " + result.getStep());
                     UserInfo.setUserInfo(result.getStep());
+                    UserInfo.setName(result.getName());
+                    UserInfo.setJoinData(result.getDate().substring(0, 10));
+                    Log.d("myapp", UserInfo.getJoinData());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     //액티비티 종료

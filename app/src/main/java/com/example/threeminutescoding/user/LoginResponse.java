@@ -12,6 +12,12 @@ public class LoginResponse {
     @SerializedName("step")
     private int step;
 
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("date")
+    private String date;
+
     public int getCode() {
         return code;
     }
@@ -22,5 +28,13 @@ public class LoginResponse {
 
     public int getStep() {
         return step;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

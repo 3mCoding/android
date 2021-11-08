@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         passBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startLogin(new LoginData("@e-mirim.hs.kr", "zzzzzzzz"));
+                startLogin(new LoginData("1@e-mirim.hs.kr", "11111111"));
             }
         });
         loginBtn.setOnClickListener(new View.OnClickListener() {

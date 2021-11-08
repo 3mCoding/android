@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProblemRecoActivity"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/action_bar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text="개념이 이해되지 않거나,\n풀어보고 싶은 문제가 있다면 알려주세요!" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/linear_background_white"
+            android:elevation="10dp"
+            android:layout_margin="20dp">
+            <EditText
+                android:id="@+id/edtReco"
+                android:theme="@style/EditTheme"
+                android:gravity="left|top"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:backgroundTint="@color/colorMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="10"
+                android:maxLines="15"
+                android:background="@null"
+                android:hint="프로그래밍 언어 문법, 예제 등 무엇이든 좋아요!"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/btnSubmit"
+            android:textSize="18sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:background="@drawable/button_main_problem"
+            android:text="제출하기"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

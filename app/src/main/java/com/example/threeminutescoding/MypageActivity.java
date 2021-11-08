@@ -2,6 +2,7 @@ package com.example.threeminutescoding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -46,10 +47,26 @@ public class MypageActivity extends AppCompatActivity {
         txtEmail.setText(email);
 
 
+        txtInfoModi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getApplicationContext(), InfoModifyActivity.class);
+                startActivity(in);
+            }
+        });
+
         txtVersion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "앱 버전 : 1.0", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        txtProblemReco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getApplicationContext(), ProblemRecoActivity.class);
+                startActivity(in);
             }
         });
 

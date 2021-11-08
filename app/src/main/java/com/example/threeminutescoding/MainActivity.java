@@ -12,12 +12,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     FragmentAdapter adapter;
     Button btnProblem;
+    ImageButton btnUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         adapter = new FragmentAdapter(getSupportFragmentManager());
         btnProblem = findViewById(R.id.btnProblem);
+        btnUser = findViewById(R.id.btnUser);
+
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getApplicationContext(), MypageActivity.class);
+                startActivity(in);
+            }
+        });
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

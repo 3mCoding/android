@@ -18,7 +18,7 @@ public class MypageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
-        txtTitle = findViewById(R.id.txtTitle);
+        txtTitle = findViewById(R.id.text_title);
         txtTitle.setText("마이페이지");
 
         txtName = findViewById(R.id.txtName);

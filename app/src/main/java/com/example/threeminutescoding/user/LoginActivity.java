@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
+            UserInfo.setEmail(inputEmail);
             startLogin(new LoginData(inputEmail, inputPw));
             showProgress(true);
         }

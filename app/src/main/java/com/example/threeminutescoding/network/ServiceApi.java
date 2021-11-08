@@ -1,6 +1,7 @@
 package com.example.threeminutescoding.network;
 
 import com.example.threeminutescoding.Question.AnswerResponse;
+import com.example.threeminutescoding.Question.Description;
 import com.example.threeminutescoding.Question.Question;
 import com.example.threeminutescoding.Question.QuestionList;
 import com.example.threeminutescoding.Question.answerData;
@@ -32,6 +33,9 @@ public interface ServiceApi {
     //문제 - 정답 확인
     @POST("/question/answer")
     public Call<AnswerResponse> questionAnswer(@Body answerData data);
+    //문제 - 설명
+    @GET("/question/description")
+    public Call<List<Description>> descriptionData(@Query("id") int id);
     //문제 리스트
     @GET("/question/list")
     public Call<List<QuestionList>> questionListData();

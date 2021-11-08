@@ -183,19 +183,7 @@
         android:paddingRight="20dp"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@drawable/button_description" />
 
-    <TextView
-        android:background="#fff"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
-        android:text="구글 로그인" />
 
     <ProgressBar
         android:id="@+id/join_progress"

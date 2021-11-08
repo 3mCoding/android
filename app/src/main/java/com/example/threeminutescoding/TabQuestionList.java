@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,16 +34,17 @@ public class TabQuestionList extends Fragment {
     ListView listview;
     //intent로 question activity 넘어가기 위해 몇번째 문제인지 필요함.
     ArrayList<Integer> getStep = new ArrayList<>();
-    //데이터 저장 시 no번 - title 식으로 저장
+    ArrayList<Integer> isSolve = new ArrayList<>();
     ArrayList<String> getData = new ArrayList<>();
     QuestionListAdapter adapter;
+    ImageView imgView;
     int cnt = 0;
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.tab_question_list, container, false);
-
+        ImageView imgView = v.findViewById(R.id.is_solve);
         listview = v.findViewById(R.id.list_view);
         detailsData();
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,6 +61,7 @@ public class TabQuestionList extends Fragment {
         return v;
     }
     private void detailsData() {
+
         ServiceApi service = RetrofitClient.getClient().create(ServiceApi.class);
         Call<List<QuestionList>> call = service.questionListData();
         call.enqueue(new Callback<List<QuestionList>>() {
@@ -71,7 +74,12 @@ public class TabQuestionList extends Fragment {
                         getStep.add(info.getNo());
                         getData.add(info.getTitle());
                     }
-                    adapter = new QuestionListAdapter(getContext(), getData, getStep);
+                    for(int i = 0; i < getStep.size(); i++){
+                        if(i < UserInfo.getStep() - 1) isSolve.add(1);
+                        else isSolve.add(0);
+                    }
+
+                    adapter = new QuestionListAdapter(getContext(), getData, getStep, isSolve);
                     listview.setAdapter(adapter);
                 }
 

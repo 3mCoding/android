@@ -40,7 +40,7 @@ public class QuestionActivity extends AppCompatActivity {
     ArrayList<Submit> nList;
     SubmitAdapter ar;
     int answerNum, init = 0;
-    String[] items = {"java", "c", "c++"};
+    String[] items = {"java", "C", "C++"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

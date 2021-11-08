@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,12 +38,9 @@ public class QuestionActivity extends AppCompatActivity {
     int step;
     ListView list_submit;
     ArrayList<Submit> nList;
-    public static EditText[] mEdit = new EditText[5];
-    public static ArrayList<EditText> nEdit = new ArrayList<>();
     SubmitAdapter ar;
-    int answerNum;
-    String answerAll = "";
-
+    int answerNum, init = 0;
+    String[] items = {"java", "c", "c++"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +49,15 @@ public class QuestionActivity extends AppCompatActivity {
         step = intent.getIntExtra("step", 1);
         //Log.d("myapp", "question num : " + String.valueOf(num));
 
-
         txtTitle = findViewById(R.id.txtTitle);
         txtProblem = findViewById(R.id.txtProblem);
         txtResult = findViewById(R.id.txtResult);
         txtAnswer = findViewById(R.id.txtAnswer);
         txtTitle.setText("오늘의 문제 - " + step + "번");
-        getData();
+        questionSpinner();
+        getData("java");
         btnSwitch();
+
     }
 
     void btnSwitch() {
@@ -129,11 +129,6 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(QuestionActivity.this, "제출되었습니다.", Toast.LENGTH_SHORT).show();
-
-                for(int i=0; i<5; i++) {
-                    answerAll += nList.get(i).edtAnswer + "*";
-                }
-                Log.d("answerCheck", "전체 답 : " + answerAll);
                 btnDescription.setVisibility(View.VISIBLE);
                 btnSubmit.setVisibility(View.GONE);
             }
@@ -144,17 +139,15 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 btnDescription.setVisibility(View.GONE);
                 btnSubmit.setVisibility(View.VISIBLE);
-
                 Intent in = new Intent(QuestionActivity.this, AnswerActivity.class);
                 startActivity(in);
             }
         });
     }
 
-    void getData() {
+    void getData(String type) {
         service = RetrofitClient.getClient().create(ServiceApi.class);
-
-        Call<List<Question>> call = service.questionData("java", step);
+        Call<List<Question>> call = service.questionData(type, step);
         call.enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
@@ -173,13 +166,16 @@ public class QuestionActivity extends AppCompatActivity {
                     Log.d("myapp", "question - else err");
                     Log.d("myapp", response.errorBody().toString());
                 }
-                for (int i = 0; i < answerNum; i++) {
-                    Submit submit = new Submit(i + 1);
-                    nList.add(submit);
-                }
-                ar = new SubmitAdapter(getApplicationContext(), nList);
-                list_submit.setAdapter(ar);
+                if(init != 1){
+                    for (int i = 0; i < answerNum; i++) {
 
+                        Submit submit = new Submit(i + 1);
+                        nList.add(submit);
+                    }
+                    ar = new SubmitAdapter(getApplicationContext(), nList);
+                    list_submit.setAdapter(ar);
+                    init++;
+                }
             }
 
             @Override
@@ -191,4 +187,24 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
+    void questionSpinner(){
+        Spinner spinner = findViewById(R.id.language);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, items
+        );
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(view.getContext(), items[position], Toast.LENGTH_LONG).show();
+                getData(items[position]);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
 }

@@ -17,11 +17,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.threeminutescoding.DescriptionActivity;
+import com.example.threeminutescoding.QuestionListAdapter;
 import com.example.threeminutescoding.R;
 import com.example.threeminutescoding.Submit;
 import com.example.threeminutescoding.SubmitAdapter;
 import com.example.threeminutescoding.network.RetrofitClient;
 import com.example.threeminutescoding.network.ServiceApi;
+import com.example.threeminutescoding.user.StepResponse;
+import com.example.threeminutescoding.user.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,9 +148,9 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 else {
                     checkAnswer(new answerData(id, answerAll));
-
+                    if(UserInfo.getStep() == step)
+                        stepUpdate();
                 }
-
             }
         });
 
@@ -244,6 +247,26 @@ public class QuestionActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
                 Log.e("로그인 에러 발생",t.getMessage());
                 t.printStackTrace();
+            }
+        });
+    }
+    void stepUpdate(){
+        ServiceApi service = RetrofitClient.getClient().create(ServiceApi.class);
+        Call<Void> call = service.stepData(UserInfo.getEmail(), ++step);
+        call.enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UserInfo.setStep(step++);
+                    Log.d("myapp_", String.valueOf(UserInfo.getStep()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("myapp_",t.getMessage());
+                Log.d("myapp_", "실패");
             }
         });
     }

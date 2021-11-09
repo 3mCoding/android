@@ -95,11 +95,10 @@ public class LoginActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             startLogin(new LoginData(inputEmail, inputPw));
-            //UserInfo.setEmail(inputEmail);
             showProgress(true);
         }
     }
-    private void startLogin(LoginData data) {
+    private void startLogin(final LoginData data) {
         service.userLogin(data).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -112,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                     UserInfo.setUserInfo(result.getStep());
                     UserInfo.setName(result.getName());
                     UserInfo.setJoinData(result.getDate().substring(0, 10));
+                    UserInfo.setRank(result.getRank());
+                    UserInfo.setEmail(data.userEmail);
                     Log.d("myapp", UserInfo.getJoinData());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);

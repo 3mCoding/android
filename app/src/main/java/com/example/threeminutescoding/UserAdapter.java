@@ -49,6 +49,8 @@ public class UserAdapter extends BaseAdapter {
         viewName.setText(name.get(i));
         viewStep.setText(String.valueOf(step.get(i)) + "번");
 
+
+
         return view;
     }
 }

@@ -123,6 +123,7 @@
             </RelativeLayout>
 
             <TextView
+                android:background="#000"
                 android:visibility="gone"
                 android:id="@+id/txtAnswer"
                 android:layout_marginLeft="10dp"
@@ -130,7 +131,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="java 코드  ~~~~"
-                android:textColor="#000"
+                android:fontFamily="@font/d2coding"
+                android:textColor="#fff"
                 android:textSize="15sp" />
             <RelativeLayout
                 android:background="#fff"

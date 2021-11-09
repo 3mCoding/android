@@ -8,6 +8,7 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.threeminutescoding.Question.Description;
 import com.example.threeminutescoding.network.RetrofitClient;
@@ -82,5 +83,14 @@ public class DescriptionActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(DescriptionActivity.this, "메인 화면 이동.", Toast.LENGTH_SHORT).show();   //토스트 메시지
+        Intent intent = new Intent(DescriptionActivity.this, MainActivity.class); //지금 액티비티에서 다른 액티비티로 이동하는 인텐트 설정
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);    //인텐트 플래그 설정
+        startActivity(intent);  //인텐트 이동
+        finish();   //현재 액티비티 종료
     }
 }

@@ -4,17 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.threeminutescoding.Question.QuestionActivity;
 import com.example.threeminutescoding.Question.QuestionList;
@@ -25,6 +29,7 @@ import com.example.threeminutescoding.user.UserInfo;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,9 +42,7 @@ public class TabQuestionList extends Fragment {
     ArrayList<Integer> isSolve = new ArrayList<>();
     ArrayList<String> getData = new ArrayList<>();
     QuestionListAdapter adapter;
-    int step = UserInfo.getStep();
-    ImageView imgView;
-    int cnt = 0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,18 +54,12 @@ public class TabQuestionList extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position == step-1 || isSolve.get(position) == 1) {
-                    Intent intent = new Intent(getContext(), QuestionActivity.class);
-                    //리스트 누르면 해당 position 반환하는데, 포지션에 해당하는 getStep을 step 변수에 저장
-                    int step = getStep.get(position);
-                    //Log.d("myapp", "list : " + step);
-                    intent.putExtra("step", step);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getContext(), "현재 문제를 풀어야 볼 수 있는 문제입니다.", Toast.LENGTH_SHORT).show();
-                }
-
+                Intent intent = new Intent(getContext(), QuestionActivity.class);
+                //리스트 누르면 해당 position 반환하는데, 포지션에 해당하는 getStep을 step 변수에 저장
+                int step = getStep.get(position);
+                //Log.d("myapp", "list : " + step);
+                intent.putExtra("step", step);
+                startActivity(intent);
             }
         });
         return v;
@@ -97,5 +94,24 @@ public class TabQuestionList extends Fragment {
 
             }
         });
+    }
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                detailsData();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                //터치 후 손가락을 움직일 때 할 일
+                break;
+            case MotionEvent.ACTION_UP:
+                //손가락을 화면에서 뗄 때 할 일
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                // 터치가 취소될 때 할 일
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }

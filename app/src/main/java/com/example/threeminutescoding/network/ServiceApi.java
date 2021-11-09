@@ -36,7 +36,7 @@ public interface ServiceApi {
     public Call<AnswerResponse> questionAnswer(@Body answerData data);
     //문제 - step update
     @POST("/user/pass")
-    public Call<Void> stepData(@Query("email") String email, @Query("step") int step);
+    public Call<StepResponse> stepData(@Query("email") String email, @Query("step") int step);
     //문제 - 설명
     @GET("/question/description")
     public Call<List<Description>> descriptionData(@Query("id") int id);

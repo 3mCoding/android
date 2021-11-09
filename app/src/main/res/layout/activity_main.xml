@@ -74,6 +74,7 @@
             app:tabTextColor="#707070"
             app:tabSelectedTextColor="#000">
         </com.google.android.material.tabs.TabLayout>
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_below="@+id/tabLayout"

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.threeminutescoding.DescriptionActivity;
+import com.example.threeminutescoding.MainActivity;
 import com.example.threeminutescoding.QuestionListAdapter;
 import com.example.threeminutescoding.R;
 import com.example.threeminutescoding.Submit;
@@ -141,6 +142,11 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 Log.d("myapp", "전체 답 : " + answerAll);
 
+                Log.d("myapp__", "UserInfo.getStep()");
+                Log.d("myapp__", String.valueOf(UserInfo.getStep()));
+
+                Log.d("myapp__", "step");
+                Log.d("myapp__", String.valueOf(step));
                 if(answerAll.contains("null")){
                     Toast.makeText(QuestionActivity.this, "모든 문항을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
@@ -160,6 +166,7 @@ public class QuestionActivity extends AppCompatActivity {
                 Intent intent = new Intent(QuestionActivity.this, DescriptionActivity.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -250,19 +257,20 @@ public class QuestionActivity extends AppCompatActivity {
     }
     void stepUpdate(){
         ServiceApi service = RetrofitClient.getClient().create(ServiceApi.class);
-        Call<Void> call = service.stepData(UserInfo.getEmail(), ++step);
-        call.enqueue(new Callback<Void>() {
-
+        final int stepP = step + 1;
+        Log.d("myapp__", String.valueOf(stepP));
+        Call<StepResponse> call = service.stepData(UserInfo.getEmail(), stepP);
+        call.enqueue(new Callback<StepResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<StepResponse> call, Response<StepResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    UserInfo.setStep(step++);
+                    UserInfo.setStep(stepP);
                     Log.d("myapp_", String.valueOf(UserInfo.getStep()));
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<StepResponse> call, Throwable t) {
                 Log.e("myapp_",t.getMessage());
                 Log.d("myapp_", "실패");
             }

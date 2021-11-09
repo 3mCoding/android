@@ -43,8 +43,6 @@ public class QuestionActivity extends AppCompatActivity {
     int step;
     ListView list_submit;
     ArrayList<Submit> nList;
-    public static EditText[] mEdit = new EditText[5];
-    public static ArrayList<EditText> nEdit = new ArrayList<>();
     SubmitAdapter ar;
     int answerNum, init = 0, id;
     String[] items = {"java", "c", "c++"};

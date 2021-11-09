@@ -61,6 +61,12 @@ public class QuestionActivity extends AppCompatActivity {
         txtResult = findViewById(R.id.txtResult);
         txtAnswer = findViewById(R.id.txtAnswer);
         txtTitle.setText("오늘의 문제 - " + step + "번");
+//        if(step > UserInfo.getStep()){
+//            Toast.makeText(QuestionActivity.this, "현재 단계에서 풀 수 없는 문제입니다.", Toast.LENGTH_LONG).show();
+//            Intent intent2 = new Intent(QuestionActivity.this, MainActivity.class);
+//            startActivity(intent2);
+//            finish();
+//        }
         questionSpinner();
         getData("java");
         btnSwitch();

@@ -1,10 +1,14 @@
 package com.example.threeminutescoding;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.threeminutescoding.user.UserInfo;
 
 import java.util.ArrayList;
 
@@ -48,6 +52,15 @@ public class UserAdapter extends BaseAdapter {
         viewNumber.setText(stuNum.get(i));
         viewName.setText(name.get(i));
         viewStep.setText(String.valueOf(step.get(i)) + "번");
+        String userName = UserInfo.getName();
+        if(userName.equals(stuNum.get(i) + " " + name.get(i))) {
+            viewNumber.setTextColor(Color.parseColor("#6E9172"));
+            viewNumber.setTypeface(null, Typeface.BOLD);
+            viewName.setTextColor(Color.parseColor("#6E9172"));
+            viewName.setTypeface(null, Typeface.BOLD);
+            viewStep.setTextColor(Color.parseColor("#6E9172"));
+            viewStep.setTypeface(null, Typeface.BOLD);
+        }
 
 
 

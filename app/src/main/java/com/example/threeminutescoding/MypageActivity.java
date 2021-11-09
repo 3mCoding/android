@@ -36,7 +36,7 @@ public class MypageActivity extends AppCompatActivity {
         name = UserInfo.getName();
         date = UserInfo.getJoinData();
 
-        problem = UserInfo.getStep();
+        problem = UserInfo.getStep()-1;
         rank = UserInfo.getRank();
         email = UserInfo.getEmail();
 

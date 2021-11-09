@@ -9,6 +9,7 @@ import com.example.threeminutescoding.user.JoinData;
 import com.example.threeminutescoding.user.JoinResponse;
 import com.example.threeminutescoding.user.LoginData;
 import com.example.threeminutescoding.user.LoginResponse;
+import com.example.threeminutescoding.user.StepResponse;
 import com.example.threeminutescoding.user.StudentList;
 
 import java.util.List;
@@ -33,6 +34,9 @@ public interface ServiceApi {
     //문제 - 정답 확인
     @POST("/question/answer")
     public Call<AnswerResponse> questionAnswer(@Body answerData data);
+    //문제 - step update
+    @POST("/user/pass")
+    public Call<Void> stepData(@Query("email") String email, @Query("step") int step);
     //문제 - 설명
     @GET("/question/description")
     public Call<List<Description>> descriptionData(@Query("id") int id);

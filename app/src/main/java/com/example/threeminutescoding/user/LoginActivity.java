@@ -94,12 +94,11 @@ public class LoginActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            UserInfo.setEmail(inputEmail);
             startLogin(new LoginData(inputEmail, inputPw));
             showProgress(true);
         }
     }
-    private void startLogin(LoginData data) {
+    private void startLogin(final LoginData data) {
         service.userLogin(data).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -112,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                     UserInfo.setUserInfo(result.getStep());
                     UserInfo.setName(result.getName());
                     UserInfo.setJoinData(result.getDate().substring(0, 10));
+                    UserInfo.setRank(result.getRank());
+                    UserInfo.setEmail(data.userEmail);
                     Log.d("myapp", UserInfo.getJoinData());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
@@ -124,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
-                Log.e("로그인 에러 발생",t.getMessage());
+                Log.e("myapp",t.getMessage());
                 t.printStackTrace();
                 showProgress(false);
             }

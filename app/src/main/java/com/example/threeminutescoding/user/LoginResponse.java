@@ -12,6 +12,9 @@ public class LoginResponse {
     @SerializedName("step")
     private int step;
 
+    @SerializedName("rank")
+    private int rank;
+
     @SerializedName("name")
     private String name;
 
@@ -36,5 +39,9 @@ public class LoginResponse {
 
     public String getDate() {
         return date;
+    }
+
+    public int getRank() {
+        return rank;
     }
 }

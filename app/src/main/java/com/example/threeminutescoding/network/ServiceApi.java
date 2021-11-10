@@ -1,18 +1,18 @@
-package com.example.threeminutescoding.network;
+package com.sirius.threeminutescoding.network;
 
-import com.example.threeminutescoding.Question.AnswerResponse;
-import com.example.threeminutescoding.Question.Description;
-import com.example.threeminutescoding.Question.Question;
-import com.example.threeminutescoding.Question.QuestionList;
-import com.example.threeminutescoding.Question.RecommendResponse;
-import com.example.threeminutescoding.Question.answerData;
-import com.example.threeminutescoding.user.JoinData;
-import com.example.threeminutescoding.user.JoinResponse;
-import com.example.threeminutescoding.user.LoginData;
-import com.example.threeminutescoding.user.LoginResponse;
-import com.example.threeminutescoding.user.StepResponse;
-import com.example.threeminutescoding.user.StudentList;
-import com.example.threeminutescoding.user.UpdateResponse;
+import com.sirius.threeminutescoding.Question.AnswerResponse;
+import com.sirius.threeminutescoding.Question.Description;
+import com.sirius.threeminutescoding.Question.Question;
+import com.sirius.threeminutescoding.Question.QuestionList;
+import com.sirius.threeminutescoding.Question.RecommendResponse;
+import com.sirius.threeminutescoding.Question.answerData;
+import com.sirius.threeminutescoding.user.JoinData;
+import com.sirius.threeminutescoding.user.JoinResponse;
+import com.sirius.threeminutescoding.user.LoginData;
+import com.sirius.threeminutescoding.user.LoginResponse;
+import com.sirius.threeminutescoding.user.StepResponse;
+import com.sirius.threeminutescoding.user.StudentList;
+import com.sirius.threeminutescoding.user.UpdateResponse;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import android.content.Context;
 import android.view.View;
@@ -7,8 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.threeminutescoding.Question.MyWatcher;
-import com.example.threeminutescoding.Question.QuestionActivity;
+import com.sirius.threeminutescoding.Question.MyWatcher;
 
 import java.util.ArrayList;
 

@@ -1,11 +1,11 @@
-package com.example.threeminutescoding.Question;
+package com.sirius.threeminutescoding.Question;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
-import com.example.threeminutescoding.Submit;
+import com.sirius.threeminutescoding.Submit;
 
 public class MyWatcher implements TextWatcher {
 

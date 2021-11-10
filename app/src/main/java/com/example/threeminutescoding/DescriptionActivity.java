@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,16 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.threeminutescoding.Question.Description;
-import com.example.threeminutescoding.network.RetrofitClient;
-import com.example.threeminutescoding.network.ServiceApi;
+import com.sirius.threeminutescoding.Question.Description;
+import com.sirius.threeminutescoding.network.RetrofitClient;
+import com.sirius.threeminutescoding.network.ServiceApi;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;

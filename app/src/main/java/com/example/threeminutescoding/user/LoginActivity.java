@@ -1,4 +1,4 @@
-package com.example.threeminutescoding.user;
+package com.sirius.threeminutescoding.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.threeminutescoding.MainActivity;
-import com.example.threeminutescoding.R;
-import com.example.threeminutescoding.network.RetrofitClient;
-import com.example.threeminutescoding.network.ServiceApi;
+import com.sirius.threeminutescoding.MainActivity;
+import com.sirius.threeminutescoding.R;
+import com.sirius.threeminutescoding.network.RetrofitClient;
+import com.sirius.threeminutescoding.network.ServiceApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,13 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         viewPw = findViewById(R.id.login_password);
         loginBtn = findViewById(R.id.login_submit);
 
-        Button passBtn = findViewById(R.id.pass);
-        passBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startLogin(new LoginData("1@e-mirim.hs.kr", "11111111"));
-            }
-        });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

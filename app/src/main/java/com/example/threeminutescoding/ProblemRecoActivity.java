@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,10 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.threeminutescoding.Question.RecommendResponse;
-import com.example.threeminutescoding.network.RetrofitClient;
-import com.example.threeminutescoding.network.ServiceApi;
-import com.example.threeminutescoding.user.UserInfo;
+import com.sirius.threeminutescoding.Question.RecommendResponse;
+import com.sirius.threeminutescoding.network.RetrofitClient;
+import com.sirius.threeminutescoding.network.ServiceApi;
+import com.sirius.threeminutescoding.user.UserInfo;
 
 import retrofit2.Call;
 import retrofit2.Callback;

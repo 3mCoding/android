@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,10 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.threeminutescoding.Question.QuestionList;
-import com.example.threeminutescoding.network.RetrofitClient;
-import com.example.threeminutescoding.network.ServiceApi;
-import com.example.threeminutescoding.user.StudentList;
+import com.sirius.threeminutescoding.network.RetrofitClient;
+import com.sirius.threeminutescoding.network.ServiceApi;
+import com.sirius.threeminutescoding.user.StudentList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +77,6 @@ public class TabStudentList extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(view.getContext(), items[position], Toast.LENGTH_LONG).show();
                 num.clear();
                 name.clear();
                 step.clear();

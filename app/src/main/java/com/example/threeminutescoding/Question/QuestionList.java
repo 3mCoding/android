@@ -1,4 +1,4 @@
-package com.example.threeminutescoding.Question;
+package com.sirius.threeminutescoding.Question;
 
 import com.google.gson.annotations.SerializedName;
 

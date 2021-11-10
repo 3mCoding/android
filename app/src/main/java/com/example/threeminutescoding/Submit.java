@@ -1,6 +1,4 @@
-package com.example.threeminutescoding;
-
-import android.widget.EditText;
+package com.sirius.threeminutescoding;
 
 public class Submit {
     int number;

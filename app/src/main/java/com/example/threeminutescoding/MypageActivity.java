@@ -1,15 +1,14 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.threeminutescoding.user.UserInfo;
+import com.sirius.threeminutescoding.user.UserInfo;
 
 public class MypageActivity extends AppCompatActivity {
     TextView txtTitle;

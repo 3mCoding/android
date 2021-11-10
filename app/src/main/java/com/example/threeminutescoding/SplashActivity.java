@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.threeminutescoding.user.LoginActivity;
+import com.sirius.threeminutescoding.user.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

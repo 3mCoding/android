@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.threeminutescoding.user.UserInfo;
+import com.sirius.threeminutescoding.user.UserInfo;
 
 import java.util.ArrayList;
 

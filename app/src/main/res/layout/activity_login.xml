@@ -117,12 +117,6 @@
         android:textColor="#fff"
         android:textSize="20dp"
         android:textStyle="bold" />
-
-    <Button
-        android:text="Login pass"
-        android:id="@+id/pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
     <ProgressBar
         android:id="@+id/login_progress"
         android:layout_width="wrap_content"

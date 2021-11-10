@@ -1,4 +1,4 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

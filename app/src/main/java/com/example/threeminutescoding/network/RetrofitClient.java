@@ -1,4 +1,4 @@
-package com.example.threeminutescoding.network;
+package com.sirius.threeminutescoding.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

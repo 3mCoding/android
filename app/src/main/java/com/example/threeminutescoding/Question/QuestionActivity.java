@@ -1,4 +1,4 @@
-package com.example.threeminutescoding.Question;
+package com.sirius.threeminutescoding.Question;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,23 +9,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.threeminutescoding.DescriptionActivity;
-import com.example.threeminutescoding.MainActivity;
-import com.example.threeminutescoding.QuestionListAdapter;
-import com.example.threeminutescoding.R;
-import com.example.threeminutescoding.Submit;
-import com.example.threeminutescoding.SubmitAdapter;
-import com.example.threeminutescoding.network.RetrofitClient;
-import com.example.threeminutescoding.network.ServiceApi;
-import com.example.threeminutescoding.user.StepResponse;
-import com.example.threeminutescoding.user.UserInfo;
+import com.sirius.threeminutescoding.DescriptionActivity;
+import com.sirius.threeminutescoding.R;
+import com.sirius.threeminutescoding.Submit;
+import com.sirius.threeminutescoding.SubmitAdapter;
+import com.sirius.threeminutescoding.network.RetrofitClient;
+import com.sirius.threeminutescoding.network.ServiceApi;
+import com.sirius.threeminutescoding.user.StepResponse;
+import com.sirius.threeminutescoding.user.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;

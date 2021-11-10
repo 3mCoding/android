@@ -1,35 +1,28 @@
-package com.example.threeminutescoding;
+package com.sirius.threeminutescoding;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.threeminutescoding.Question.QuestionActivity;
-import com.example.threeminutescoding.Question.QuestionList;
-import com.example.threeminutescoding.network.RetrofitClient;
-import com.example.threeminutescoding.network.ServiceApi;
-import com.example.threeminutescoding.user.UserInfo;
+import com.sirius.threeminutescoding.Question.QuestionActivity;
+import com.sirius.threeminutescoding.Question.QuestionList;
+import com.sirius.threeminutescoding.network.RetrofitClient;
+import com.sirius.threeminutescoding.network.ServiceApi;
+import com.sirius.threeminutescoding.user.UserInfo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,0 +1,3 @@
+diff --git app/src/main/java/com/example/threeminutescoding/user/JoinActivity.java app/src/main/java/com/example/threeminutescoding/QuestionActivity.java
+rename from app/src/main/java/com/example/threeminutescoding/user/JoinActivity.java
+rename to app/src/main/java/com/example/threeminutescoding/QuestionActivity.java

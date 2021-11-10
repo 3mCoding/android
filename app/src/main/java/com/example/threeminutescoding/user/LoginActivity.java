@@ -113,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                     UserInfo.setJoinData(result.getDate().substring(0, 10));
                     UserInfo.setRank(result.getRank());
                     UserInfo.setEmail(data.userEmail);
+                    UserInfo.setStudent_num(result.getStudent_num());
                     Log.d("myapp", UserInfo.getJoinData());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);

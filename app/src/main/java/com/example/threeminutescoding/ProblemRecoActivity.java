@@ -3,11 +3,21 @@ package com.example.threeminutescoding;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.threeminutescoding.Question.RecommendResponse;
+import com.example.threeminutescoding.network.RetrofitClient;
+import com.example.threeminutescoding.network.ServiceApi;
+import com.example.threeminutescoding.user.UserInfo;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProblemRecoActivity extends AppCompatActivity {
     TextView txtTitle;
@@ -28,8 +38,29 @@ public class ProblemRecoActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtReco.setText("");
-                Toast.makeText(getApplicationContext(), "제출되었습니다.", Toast.LENGTH_SHORT).show();
+                Log.d("myapp00", "버튼 누름");
+                setData();
+            }
+        });
+    }
+    void setData(){
+        String content = edtReco.getText().toString();
+        ServiceApi service = RetrofitClient.getClient().create(ServiceApi.class);
+        Call<RecommendResponse> call = service.recData(content, UserInfo.getStudent_num());
+        call.enqueue(new Callback<RecommendResponse>() {
+            @Override
+            public void onResponse(Call<RecommendResponse> call, Response<RecommendResponse> response) {
+                RecommendResponse result = response.body();
+                if (response.isSuccessful() && response.body() != null) {
+                    edtReco.setText("");
+                    Toast.makeText(getApplicationContext(), result.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecommendResponse> call, Throwable t) {
+                Log.e("myapp_",t.getMessage());
+                Log.d("myapp_", "실패");
             }
         });
     }

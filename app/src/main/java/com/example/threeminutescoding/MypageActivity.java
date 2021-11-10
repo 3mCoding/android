@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,8 +13,18 @@ import com.example.threeminutescoding.user.UserInfo;
 
 public class MypageActivity extends AppCompatActivity {
     TextView txtTitle;
-    TextView txtName, txtEmail, txtRank, txtProblem, txtDate, txtInfoModi, txtVersion, txtProblemReco;
-    String name, email, date;
+    static TextView txtName;
+    TextView txtEmail;
+    TextView txtRank;
+    TextView txtProblem;
+    TextView txtDate;
+    TextView txtInfoModi;
+    TextView txtVersion;
+    TextView txtProblemReco;
+    static String name;
+    String email;
+    String date;
+    static String stuNum;
     int problem, rank;
 
 
@@ -33,14 +44,14 @@ public class MypageActivity extends AppCompatActivity {
         txtVersion = findViewById(R.id.txtVersion);
         txtProblemReco = findViewById(R.id.txtProblemReco);
 
+        stuNum = String.valueOf(UserInfo.getStudent_num());
         name = UserInfo.getName();
         date = UserInfo.getJoinData();
 
         problem = UserInfo.getStep()-1;
         rank = UserInfo.getRank();
         email = UserInfo.getEmail();
-
-        txtName.setText(name);
+        txtName.setText( stuNum + " " + name);
         txtDate.setText("가입한 날짜 : " + date);
         txtRank.setText("순위 : " + rank + "위");
         txtProblem.setText("푼 문제 수 : " +problem);
@@ -69,6 +80,5 @@ public class MypageActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
-
     }
 }

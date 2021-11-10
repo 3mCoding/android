@@ -4,6 +4,7 @@ import com.example.threeminutescoding.Question.AnswerResponse;
 import com.example.threeminutescoding.Question.Description;
 import com.example.threeminutescoding.Question.Question;
 import com.example.threeminutescoding.Question.QuestionList;
+import com.example.threeminutescoding.Question.RecommendResponse;
 import com.example.threeminutescoding.Question.answerData;
 import com.example.threeminutescoding.user.JoinData;
 import com.example.threeminutescoding.user.JoinResponse;
@@ -11,6 +12,7 @@ import com.example.threeminutescoding.user.LoginData;
 import com.example.threeminutescoding.user.LoginResponse;
 import com.example.threeminutescoding.user.StepResponse;
 import com.example.threeminutescoding.user.StudentList;
+import com.example.threeminutescoding.user.UpdateResponse;
 
 import java.util.List;
 
@@ -28,6 +30,9 @@ public interface ServiceApi {
     // 로그인
     @POST("/user/login")
     public Call<LoginResponse> userLogin(@Body LoginData data);
+    // 회원 정보 수정
+    @POST("/user/update")
+    public Call<UpdateResponse> userUpdate(@Query("email") String email, @Query("student_num") int student_num, @Query("name") String name);
     //문제 화면
     @GET("/question/type/{type}")
     public Call<List<Question>> questionData(@Path ("type") String type, @Query("no") int no);
@@ -40,6 +45,9 @@ public interface ServiceApi {
     //문제 - 설명
     @GET("/question/description")
     public Call<List<Description>> descriptionData(@Query("id") int id);
+    //문제 추천
+    @POST("/question/recommend")
+    public Call<RecommendResponse> recData(@Query("content") String content, @Query("student_num") int student_num);
     //문제 리스트
     @GET("/question/list")
     public Call<List<QuestionList>> questionListData();

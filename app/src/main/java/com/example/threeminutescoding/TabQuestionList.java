@@ -42,6 +42,7 @@ public class TabQuestionList extends Fragment {
     ArrayList<Integer> isSolve = new ArrayList<>();
     ArrayList<String> getData = new ArrayList<>();
     QuestionListAdapter adapter;
+    int step = UserInfo.getStep();
 
     @Nullable
     @Override
@@ -54,12 +55,17 @@ public class TabQuestionList extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), QuestionActivity.class);
-                //리스트 누르면 해당 position 반환하는데, 포지션에 해당하는 getStep을 step 변수에 저장
-                int step = getStep.get(position);
-                //Log.d("myapp", "list : " + step);
-                intent.putExtra("step", step);
-                startActivity(intent);
+                if(position == step-1 || isSolve.get(position) == 1) {
+                    Intent intent = new Intent(getContext(), QuestionActivity.class);
+                    //리스트 누르면 해당 position 반환하는데, 포지션에 해당하는 getStep을 step 변수에 저장
+                    int step = getStep.get(position);
+                    //Log.d("myapp", "list : " + step);
+                    intent.putExtra("step", step);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getContext(), "현재 문제를 풀어야 볼 수 있는 문제입니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return v;

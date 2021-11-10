@@ -15,6 +15,9 @@ public class LoginResponse {
     @SerializedName("rank")
     private int rank;
 
+    @SerializedName("student_num")
+    private int student_num;
+
     @SerializedName("name")
     private String name;
 
@@ -43,5 +46,9 @@ public class LoginResponse {
 
     public int getRank() {
         return rank;
+    }
+
+    public int getStudent_num() {
+        return student_num;
     }
 }

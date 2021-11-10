@@ -9,6 +9,7 @@ public class UserInfo {
     private static int rank;
     private static String joinData;
     private static String email;
+    private static int student_num;
 
     public static void setUserInfo(int _step){
         step = _step;
@@ -52,5 +53,13 @@ public class UserInfo {
 
     public static void setEmail(String email) {
         UserInfo.email = email;
+    }
+
+    public static int getStudent_num() {
+        return student_num;
+    }
+
+    public static void setStudent_num(int student_num) {
+        UserInfo.student_num = student_num;
     }
 }

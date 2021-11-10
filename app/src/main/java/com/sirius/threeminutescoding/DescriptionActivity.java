@@ -85,7 +85,6 @@ public class DescriptionActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Toast.makeText(DescriptionActivity.this, "메인 화면 이동.", Toast.LENGTH_SHORT).show();   //토스트 메시지
         Intent intent = new Intent(DescriptionActivity.this, MainActivity.class); //지금 액티비티에서 다른 액티비티로 이동하는 인텐트 설정
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);    //인텐트 플래그 설정
         startActivity(intent);  //인텐트 이동

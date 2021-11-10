@@ -141,7 +141,7 @@ public class QuestionActivity extends AppCompatActivity {
 
                 answerAll = "";
                 for(int i=0; i<answerNum; i++) {
-                    answerAll += nList.get(i).edtAnswer + "*";
+                    answerAll += nList.get(i).edtAnswer + ".";
                 }
                 Log.d("myapp", "전체 답 : " + answerAll);
 
@@ -150,7 +150,7 @@ public class QuestionActivity extends AppCompatActivity {
 
                 Log.d("myapp__", "step");
                 Log.d("myapp__", String.valueOf(step));
-                if(answerAll.contains("null")){
+                if(answerAll.contains("..") || answerAll.contains("null")){
                     Toast.makeText(QuestionActivity.this, "모든 문항을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
                 else {

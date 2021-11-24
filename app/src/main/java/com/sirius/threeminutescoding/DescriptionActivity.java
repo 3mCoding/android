@@ -42,7 +42,7 @@ public class DescriptionActivity extends AppCompatActivity {
         title = findViewById(R.id.text_title);
         content = findViewById(R.id.desc_content);
         ServiceApi service = RetrofitClient.getClient().create(ServiceApi.class);
-        Call<List<Description>> call = service.descriptionData(01);
+        Call<List<Description>> call = service.descriptionData(id);
         call.enqueue(new Callback<List<Description>>() {
             @Override
             public void onResponse(Call<List<Description>> call, Response<List<Description>> response) {

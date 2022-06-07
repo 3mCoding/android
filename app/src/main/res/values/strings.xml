@@ -11,5 +11,10 @@
         <item>2학년</item>
         <item>3학년</item>
     </array>
+    <string-array name="level">
+        <item>순한맛</item>
+        <item>중간맛</item>
+        <item>매운맛</item>
+    </string-array>
 
 </resources>

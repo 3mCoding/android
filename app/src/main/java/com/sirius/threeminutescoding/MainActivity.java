@@ -1,6 +1,7 @@
 package com.sirius.threeminutescoding;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.sirius.threeminutescoding.Question.QuestionActivity;
@@ -61,14 +62,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        btnProblem.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
+//                int step = UserInfo.getStep();
+//                //Log.d("myapp", "main - getStep() : " + step);
+//                intent.putExtra("step", step);
+//                startActivity(intent);
+//            }
+//        });
         btnProblem.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), QuestionActivity.class);
-                int step = UserInfo.getStep();
-                //Log.d("myapp", "main - getStep() : " + step);
-                intent.putExtra("step", step);
-                startActivity(intent);
+            public void onClick(View v) {
+                DialogFragment dialogFragment = new QuestionRecommendationDialog();
+                dialogFragment.show(getSupportFragmentManager(), "level");
             }
         });
 

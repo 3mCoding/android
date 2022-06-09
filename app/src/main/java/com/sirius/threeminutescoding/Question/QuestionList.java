@@ -2,7 +2,9 @@ package com.sirius.threeminutescoding.Question;
 
 import com.google.gson.annotations.SerializedName;
 
-public class QuestionList {
+import java.io.Serializable;
+
+public class QuestionList implements Serializable {
     @SerializedName("no")
     private int no;
     @SerializedName("title")

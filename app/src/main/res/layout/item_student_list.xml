@@ -11,21 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:id="@+id/userNumber"
+        android:id="@+id/txt_student_number"
         android:textSize="15dp"
         android:text="2107"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:id="@+id/userName"
+        android:id="@+id/txt_student_name"
         android:text="김하진"
         android:textColor="#000"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15dp"
-        android:id="@+id/userProblem"
+        android:id="@+id/txt_student_step"
         android:text="7번"
         android:gravity="right"
         android:textColor="#000"/>

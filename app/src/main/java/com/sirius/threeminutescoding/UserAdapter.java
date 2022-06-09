@@ -43,7 +43,7 @@ public class UserAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null) {
-            view = View.inflate(mContext, R.layout.tab_student_list_item, null);
+            view = View.inflate(mContext, R.layout.item_student_list, null);
         }
         TextView viewNumber = view.findViewById(R.id.userNumber);
         TextView viewName = view.findViewById(R.id.userName);

@@ -43,6 +43,7 @@
         </LinearLayout>
 
         <EditText
+            android:inputType="textEmailAddress"
             android:id="@+id/login_email"
             android:backgroundTint="#fff"
             android:layout_width="match_parent"

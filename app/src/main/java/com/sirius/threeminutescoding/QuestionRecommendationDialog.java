@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,9 +38,16 @@ public class QuestionRecommendationDialog extends DialogFragment {
         view.findViewById(R.id.btn_confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int expectMinutes = Integer.parseInt(editText.getText().toString());
-                Log.d("예상 소요 시간", expectMinutes+"");
-                dialog.dismiss();
+                String expectMinutesInput = editText.getText().toString();
+                if(expectMinutesInput.isEmpty()) {
+                    Toast.makeText(getActivity(), "예상 소요 시간을 적어주세요", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    int expectMinutes = Integer.parseInt(editText.getText().toString());
+                    Log.d("예상 소요 시간", expectMinutes+"");
+                    dialog.dismiss();
+                }
+
             }
         });
 

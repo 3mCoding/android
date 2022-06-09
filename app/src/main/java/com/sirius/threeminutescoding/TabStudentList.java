@@ -45,7 +45,7 @@ public class TabStudentList extends Fragment {
     }
     private void detailsData(int order) {
         ServiceApi service = RetrofitClient.getClient().create(ServiceApi.class);
-        Call<List<StudentList>> call = service.studentListData(order);
+        Call<List<StudentList>> call = service.studentListData();
         call.enqueue(new Callback<List<StudentList>>() {
             @Override
             public void onResponse(Call<List<StudentList>> call, Response<List<StudentList>> response) {

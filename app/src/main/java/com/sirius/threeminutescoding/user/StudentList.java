@@ -2,7 +2,9 @@ package com.sirius.threeminutescoding.user;
 
 import com.google.gson.annotations.SerializedName;
 
-public class StudentList {
+import java.io.Serializable;
+
+public class StudentList implements Serializable {
     @SerializedName("student_num")
     private String stuNum;
 

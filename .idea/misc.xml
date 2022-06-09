@@ -3,10 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hajin/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1453125" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/arrow_down_black.xml" value="0.12407407407407407" />
         <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/background_button_maon.xml" value="0.225" />
         <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/background_button_white.xml" value="0.225" />
         <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/background_edit_recommendation.xml" value="0.225" />
-        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/dialog_question_recommendation.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1453125" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/ic_person_black_24dp.xml" value="0.1453125" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/linear_background_white.xml" value="0.13240740740740742" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/drawable/spinner_background.xml" value="0.1287037037037037" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/activity_login.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/activity_main.xml" value="0.136" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/activity_question_step_all.xml" value="0.10972222222222222" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/dialog_question_recommendation.xml" value="0.176" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/item_question_step_list.xml" value="0.1175925925925926" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/item_student_list.xml" value="0.1" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/tab_question_list_item.xml" value="0.1175925925925926" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/tab_student_list.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/tab_student_list_item.xml" value="0.136" />
+        <entry key="..\:/Users/hajin/android/app/src/main/res/layout/toolbar.xml" value="0.10972222222222222" />
       </map>
     </option>
   </component>

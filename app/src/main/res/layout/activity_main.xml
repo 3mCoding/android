@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="5">
 
     <FrameLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_weight="3">
 
         <ImageView
             android:background="#7D7D7D"
@@ -59,27 +60,101 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="12">
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tabLayout"
-            android:background="#ffffff"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:tabIndicatorColor="#6E9172"
-            app:tabIndicatorHeight="1.5dp"
-            app:tabTextColor="#707070"
-            app:tabSelectedTextColor="#000">
-        </com.google.android.material.tabs.TabLayout>
+        android:weightSum="20"
+        android:layout_weight="2">
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="11"
+            android:scrollbars="none"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:overScrollMode="never">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:elevation="7dp">
+                <LinearLayout
+                    android:background="@drawable/linear_background_white"
+                    android:layout_width="315dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="7dp"
+                    android:elevation="7dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="단계별 문제 >>"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:id="@+id/btn_question_step" />
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_question_step" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_below="@+id/tabLayout"
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@drawable/linear_background_white"
+                    android:layout_width="315dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:elevation="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="7dp"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="난이도별 문제 >> "
+                        android:textStyle="bold"
+                        android:id="@+id/btn_question_level"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/list_question_level" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout
+            android:background="@drawable/linear_background_white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:elevation="7dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="미림인 순위 >> "
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:id="@+id/btn_student"
+                android:textColor="@color/black" />
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/list_student" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
